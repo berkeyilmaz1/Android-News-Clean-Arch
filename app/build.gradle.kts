@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id ("kotlin-parcelize")
+    id("kotlin-parcelize")
     id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -13,11 +14,14 @@ android {
     defaultConfig {
         applicationId = "com.duzceders.newscleanarch"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 35  
         versionCode = 1
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -30,14 +34,22 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17  // Updated from 11
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.13"  // Ensure this matches your Compose version
+    }
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
@@ -63,7 +75,8 @@ dependencies {
     implementation (libs.hilt.android)
     ksp (libs.hilt.compiler)
     implementation (libs.androidx.hilt.navigation.compose)
-
+    implementation(libs.hilt.android.v250)
+    ksp(libs.hilt.android.compiler)
 
     //Retrofit
     implementation (libs.retrofit)
