@@ -11,8 +11,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import com.duzceders.newscleanarch.domain.usecases.AppEntryUseCases
+import com.duzceders.newscleanarch.presentation.onboarding.OnBoardingViewModel
 import com.duzceders.newscleanarch.presentation.onboarding.OnboardingView
 import com.duzceders.newscleanarch.ui.theme.NewsCleanArchTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +24,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @Inject
+
     lateinit var appEntryUseCases: AppEntryUseCases
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +40,10 @@ class MainActivity : ComponentActivity() {
             NewsCleanArchTheme(
                 dynamicColor = false
             ) {
-                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) { OnboardingView() }
+                Box(modifier = Modifier.background(color = MaterialTheme.colorScheme.background)) {
+                    val viewModel: OnBoardingViewModel = hiltViewModel()
+                    OnboardingView(viewModel::onEvent)
+                }
             }
         }
     }

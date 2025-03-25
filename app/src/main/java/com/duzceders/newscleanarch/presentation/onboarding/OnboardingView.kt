@@ -26,7 +26,7 @@ import com.duzceders.newscleanarch.presentation.onboarding.components.PageIndica
 import kotlinx.coroutines.launch
 
 @Composable
-fun OnboardingView() {
+fun OnboardingView(event: (OnBoardingEvent) -> Unit) {
 
     Column(modifier = Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState(initialPage = 0) {
@@ -79,8 +79,8 @@ fun OnboardingView() {
                     title = buttonState.value[1],
                 ) {
                     scope.launch {
-                        if (pagerState.currentPage == 3) {
-                            //TODO: Navigate to the home screen
+                        if (pagerState.currentPage == 2) {
+                            event(OnBoardingEvent.saveAppEntry)
 
                         } else {
                             pagerState.animateScrollToPage(page = pagerState.currentPage + 1)
