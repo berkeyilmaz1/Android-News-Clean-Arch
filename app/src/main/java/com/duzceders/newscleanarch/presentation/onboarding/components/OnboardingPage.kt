@@ -17,8 +17,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import com.duzceders.newscleanarch.R
-import com.duzceders.newscleanarch.presentation.onboarding.OnboardPage
-import com.duzceders.newscleanarch.presentation.onboarding.onboardPages
+import com.duzceders.newscleanarch.presentation.onboarding.model.OnboardPage
+import com.duzceders.newscleanarch.presentation.onboarding.model.onboardPages
 import com.duzceders.newscleanarch.ui.theme.NewsCleanArchTheme
 
 
