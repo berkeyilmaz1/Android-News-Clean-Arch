@@ -23,6 +23,7 @@ import com.duzceders.newscleanarch.presentation.common.NewsButton
 import com.duzceders.newscleanarch.presentation.common.NewsTextButton
 import com.duzceders.newscleanarch.presentation.onboarding.components.OnboardingPage
 import com.duzceders.newscleanarch.presentation.onboarding.components.PageIndicator
+import com.duzceders.newscleanarch.presentation.onboarding.model.onboardPages
 import kotlinx.coroutines.launch
 
 @Composable
